@@ -1,0 +1,38 @@
+import java.util.Scanner;
+
+public class Driver {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Welcome to our banking system!");
+        System.out.println("Please enter your ID");
+        int ID = scan.nextInt();
+        Bank b = new Bank(ID);
+        while (true) {
+            System.out.println("\nChoose an option:");
+            System.out.println("1. Deposit");
+            System.out.println("2. Withdraw");
+            System.out.println("3. Check Balance");
+            System.out.println("4. Exit");
+            int ans = scan.nextInt();
+            double amount;
+
+            if (ans == 1) {
+                System.out.println("Enter the amount you want to deposit");
+                amount = scan.nextDouble();
+                b.deposit(amount);
+            } else if (ans == 2) {
+                System.out.println("Enter the amount you want to withdraw");
+                amount = scan.nextDouble();
+                b.withdraw(amount);
+            } else if (ans == 3) {
+                System.out.print("This is your total balance: "+ b.checkBalance());
+            } else if (ans == 4) {
+                System.out.println("Thank you for using our banking system :)");
+                break;
+            } else {
+                System.out.println("Invalid Choice");
+            }
+        }
+        scan.close();
+    }
+}
